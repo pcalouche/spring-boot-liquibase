@@ -1,4 +1,4 @@
-package com.pcalouch.springbootliquibase;
+package com.pcalouche.springbootliquibase;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
