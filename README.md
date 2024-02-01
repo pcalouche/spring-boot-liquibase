@@ -9,14 +9,16 @@ This application can run as part of a build process or as an executable jar.
 
 This can be helpful as part of your build process during development. Doing a Maven compile with the liquibase profile
 active along with the required arguments:
+
 ```
 mvnw compile -Pliquibase -DdbUrl=[dbUrl] -DdbUser=[dbUser] -DdbPwd=[dbPwd] -DdropFirst==[dropFirst]
 ```
 
 For example:
+
 ```
 mvnw compile -Pliquibase -DdbUrl=jdbc:postgresql://localhost:5432/postgres -DdbUser=postgres -DdbPwd=admin -DdropFirst=true
-````
+```
 
 ## Running as an Executable JAR
 
@@ -47,7 +49,7 @@ This example uses a PostgreSQL database. After the liquibase changes have run tw
 schema:
 
 1. **databasechangelog** - A log of all the liquibase change sets run
-1. **databasechangeloglock** - A table that is checked to get a lock to avoid multiple liquibase instances happening
+2. **databasechangeloglock** - A table that is checked to get a lock to avoid multiple liquibase instances happening
    at the same time
 
 Liquibase creates these tables.
@@ -72,3 +74,4 @@ database driver runtime dependency. Replace that with the database driver you ne
     <scope>runtime</scope>
 </dependency>
 ```
+

@@ -1,0 +1,19 @@
+version: 2
+registries:
+  github:
+    type: "maven-repository"
+    url: "https://maven.pkg.github.com/pcalouche/*"
+    username: ${{ secrets.MAVEN_SERVER_USERNAME }}
+    password: ${{ secrets.MAVEN_SERVER_PASSWORD }}
+updates:
+  - package-ecosystem: "maven"
+    directory: "/" # Location of package manifests
+    registries: "*"
+    schedule:
+      interval: "daily"
+    target-branch: "main"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "main"
