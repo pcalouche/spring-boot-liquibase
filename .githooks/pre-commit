@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Running pre-commit hook: formatting files"
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+[ -z "$FILES" ] && exit 0
+
+# Apply formatting to all files
+make format
+
+# Add back the formatted files to staging
+echo "$FILES" | xargs git add
+
+exit 0
