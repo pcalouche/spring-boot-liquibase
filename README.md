@@ -11,13 +11,13 @@ This can be helpful as part of your build process during development. Doing a Ma
 active along with the required arguments:
 
 ```
-mvnw compile -Pliquibase -DdbUrl=[dbUrl] -DdbUser=[dbUser] -DdbPwd=[dbPwd] -DdropFirst==[dropFirst]
+mvn compile -Pliquibase -DdbUrl=[dbUrl] -DdbUser=[dbUser] -DdbPwd=[dbPwd] -DdropFirst=[dropFirst]
 ```
 
 For example:
 
 ```
-mvnw compile -Pliquibase -DdbUrl=jdbc:postgresql://localhost:5432/postgres -DdbUser=postgres -DdbPwd=admin -DdropFirst=true
+mvn compile -Pliquibase -DdbUrl=jdbc:postgresql://localhost:5432/postgres -DdbUser=postgres -DdbPwd=admin -DdropFirst=true
 ```
 
 ## Running as an Executable JAR
@@ -28,7 +28,7 @@ option.
 1. Package the application
 
 ```
-mvnw package
+mvn package
 ```
 
 1. Run the application with the required arguments
