@@ -2,29 +2,32 @@ name: Continuous Integration
 
 on:
   push:
-env:
-  MAVEN_SERVER_USERNAME: ${{ secrets.MAVEN_SERVER_USERNAME }}
-  MAVEN_SERVER_PASSWORD: ${{ secrets.MAVEN_SERVER_PASSWORD }}
 
 permissions:
   contents: read
+  packages: read
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref != 'refs/heads/main' && github.ref || github.run_id }}"
+  cancel-in-progress: true
 
 jobs:
-  maven-verify:
+  build-and-run-tests:
+    name: Build and Run Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           show-progress: false
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
-          server-id: github
-          server-username: MAVEN_SERVER_USERNAME
-          server-password: MAVEN_SERVER_PASSWORD
-      - name: Verify build
-        run: mvn -B verify
+      - name: Run Maven
+        run: make mvn-verify-ci
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
