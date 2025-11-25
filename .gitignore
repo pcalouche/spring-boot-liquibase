@@ -43,6 +43,3 @@ out/
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# jenv
-.java-version
