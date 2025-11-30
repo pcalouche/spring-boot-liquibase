@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: ${dbUrl}
+    username: ${dbUser}
+    password: ${dbPwd}
+  liquibase:
+    change-log: classpath:liquibase/master.xml

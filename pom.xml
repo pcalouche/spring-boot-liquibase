@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>dev.pcalouche.springforge.spring35x</groupId>
+    <groupId>dev.pcalouche.springforge.spring40x</groupId>
     <artifactId>spring-forge-starter-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
@@ -24,7 +24,7 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jdbc</artifactId>
+      <artifactId>spring-boot-starter-liquibase</artifactId>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>

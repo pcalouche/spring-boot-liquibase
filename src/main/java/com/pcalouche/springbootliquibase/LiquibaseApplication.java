@@ -18,7 +18,7 @@ public class LiquibaseApplication {
 
 	private static final List<String> requiredOptions = Arrays.asList("dbUrl", "dbUser", "dbPwd");
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		configureApplication(new SpringApplicationBuilder(), new DefaultApplicationArguments(args)).run(args);
 	}
 
