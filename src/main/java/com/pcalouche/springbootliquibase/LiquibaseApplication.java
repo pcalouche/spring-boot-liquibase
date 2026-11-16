@@ -4,17 +4,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.DefaultApplicationArguments;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
+@Slf4j
 public class LiquibaseApplication {
-
-	private static final Logger logger = LoggerFactory.getLogger(LiquibaseApplication.class);
 
 	private static final List<String> requiredOptions = Arrays.asList("dbUrl", "dbUser", "dbPwd");
 
@@ -24,14 +23,13 @@ public class LiquibaseApplication {
 
 	private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder,
 			ApplicationArguments args) {
-		logger.info("Application started with the following arguments:");
+		log.info("Application started with the following arguments:");
 		for (String name : args.getOptionNames()) {
-			logger.info(name + " -> " + args.getOptionValues(name));
+			log.info("{} -> {}", name, args.getOptionValues(name));
 		}
 
 		if (!args.getOptionNames().containsAll(requiredOptions)) {
-			logger.error(String.format("Not all required arguments were supplied.  Required arguments are: %s",
-					requiredOptions));
+			log.error("Not all required arguments were supplied.  Required arguments are: {}", requiredOptions);
 			System.exit(1);
 		}
 
